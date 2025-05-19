@@ -32,12 +32,13 @@ insert into projects values (1 , 'AI Chatbot' , 101) , (2 , 'Payroll System' , 1
 select * from projects
 
 --=======================================================================--
-
 -- 1. INNER JOIN: List employee names along with their department names.
 
 select employee.Emp_Name as 'employee name' ,  Dept_Name as 'department name'   
 
 from employee inner join depts on employee.DEPT_ID=depts.DEPT_ID;
+
+select * from employee inner join depts on employee.DEPT_ID = depts.DEPT_ID;
 
 --=======================================================================--
 
@@ -48,22 +49,22 @@ select * from employee left join depts on employee.Emp_Name=depts.Dept_Name;
 
 select employee.Emp_Name ,  Dept_Name  
 
-from employee left join depts on employee.Emp_Name=depts.Dept_Name;
+from employee left join depts on employee.DEPT_ID=depts.DEPT_ID;
 
 --=======================================================================--
 
 -- 3. RIGHT JOIN: List all departments with their assigned employees (include those without employees).
 
-select * from depts right join employee on depts.Dept_Name=employee.Emp_Name;
+select * from depts right join employee on depts.DEPT_ID=employee.DEPT_ID;
 
-
+-- for specific coloumns
 select  depts.Dept_Name  , employee.Emp_Name 
 
-from depts right join  employee on depts.Dept_Name=employee.Emp_Name;
+from depts right join  employee on depts.DEPT_ID=employee.DEPT_ID;
 
 
 --=======================================================================--
 
 -- 4. FULL OUTER JOIN: Display all employees and departments, including unmatched records on both sides.
 
-select * from employee full outer join depts on employee.Emp_Name=depts.Dept_Name;
+select * from employee full outer join depts on employee.DEPT_ID=depts.DEPT_ID
